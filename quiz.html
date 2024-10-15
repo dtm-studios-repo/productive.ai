@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Maker</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif;
+            color: white;
+        }
+        body {
+            font-size: 16px;
+            background-color: #121212;
+        }
+        .w3-sidebar {
+            background-color: #1e1e1e;
+        }
+        .container {
+            margin-left: 340px;
+            margin-right: 40px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center; /* Center text in container */
+        }
+        h1 {
+            color: #3498db;
+        }
+        /* Bot container styling */
+        .bot-container {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #2b2b2b;
+            position: relative;
+            height: 500px; /* Set a fixed height */
+            overflow: hidden; /* Hide overflow */
+            display: flex; /* Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+        /* Hide fallback message initially */
+        .fallback-message {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a>
+    <a href="stock.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommendation</a>
+    <a href="summarise.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a> 
+    <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a>
+    <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+    <a href="#uses" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Uses</a>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main Content -->
+<div class="container">
+    <h1>Quiz Maker</h1>
+    <p>Welcome to the Quiz Maker! You can interact with our AI bot to create quizzes and test your knowledge.</p>
+
+    <!-- Bot Container -->
+    <div class="bot-container" id="bot-container">
+        <h2>Chat with our AI Bot</h2>
+        <div class="fallback-message" id="fallback-message">
+            The chat bot is currently unavailable. Please try again later.
+        </div>
+        <script>
+            // Check if Botpress script loads successfully
+            var script = document.createElement('script');
+            script.src = "https://cdn.botpress.cloud/webchat/v0/inject.js";
+            script.onload = function() {
+                // Load Botpress configuration if the script is successfully loaded
+                var configScript = document.createElement('script');
+                configScript.src = "https://mediafiles.botpress.cloud/fb656d56-2849-4f70-b580-886c903d2df2/webchat/config.js";
+                document.body.appendChild(configScript);
+            };
+            script.onerror = function() {
+                document.getElementById('fallback-message').style.display = 'block'; // Show fallback message
+            };
+            document.body.appendChild(script);
+        </script>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="w3-container w3-padding-32 w3-center" style="background-color: #1e1e1e; color: white;">
+  <p>Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
+</div>
+
+<script>
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+    
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

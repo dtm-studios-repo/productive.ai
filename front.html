@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Productive.ai</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body, h1, h2, h3, h4, h5 {
+  font-family: "Poppins", sans-serif;
+  color: white; /* Set text color to white */
+}
+body {
+  font-size: 16px;
+  background-color: #121212; /* Dark background color */
+}
+.w3-sidebar {
+  background-color: #1e1e1e; /* Darker sidebar color */
+}
+.w3-half img {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  opacity: 0.9;
+  cursor: pointer;
+}
+.w3-half img:hover {
+  opacity: 1;
+}
+.header-logo {
+  width: 100%; /* Full width for the header logo */
+  max-width: 300px; /* Maximum width for the logo */
+  display: block;
+  margin: 0 auto; /* Center the logo */
+}
+.footer {
+  background-color: #1e1e1e; /* Match footer with dark theme */
+  color: white; /* Set footer text color to white */
+  padding: 32px; /* Add padding to the footer */
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="stock.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommendations</a> 
+    <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a> 
+    <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a> 
+    <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a> 
+    <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
+    <a href="#uses" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Uses</a> 
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+  <span style="color:white;">Productive.ai</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <img src="data:image/png;base64,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" class="header-logo" alt="Productive.ai Logo">
+    <h1 class="w3-jumbo"><b>Productivity Redefined</b></h1>
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Productive.ai Features</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
+  </div>
+  
+   <!-- Features grid -->
+   <div class="w3-row-padding" id="smartnote">
+    <div class="w3-half">
+      <img src="https://blogimages.softwaresuggest.com/blog/wp-content/uploads/2023/10/16172046/10-Best-AI-Note-Taking-App-in-2023-1.jpg" style="width:100%" alt="Smart Note Maker">
+      <h3>Smart Note Maker</h3>
+      <p>Create organized and insightful notes from any text input. Save time by allowing AI to structure your ideas and notes for you.</p>
+    </div>
+
+    <div class="w3-half" id="stock">
+      <img src="https://cdn.pixabay.com/photo/2024/01/06/02/44/ai-generated-8490532_640.png" style="width:75%" alt="Stock Recommender">
+      <h3>Stock Recommender</h3>
+      <p>Receive AI-driven stock recommendations based on market trends, financial news, and historical data.</p>
+    </div>
+  </div>
+
+  <div class="w3-row-padding" id="news">
+    <div class="w3-half">
+      <img src="https://media.istockphoto.com/id/1409309637/vector/breaking-news-label-banner-isolated-vector-design.jpg?s=612x612&w=0&k=20&c=JoQHezk8t4hw8xXR1_DtTeWELoUzroAevPHo0Lth2Ow=" style="width:100%" alt="News Summarizer">
+      <h3>News Summarizer</h3>
+      <p>Get quick summaries of the latest news articles to stay informed without the overwhelm. AI condenses lengthy articles into digestible summaries.</p>
+    </div>
+
+    <div class="w3-half" id="story">
+      <img src="data:image/png;base64,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" style="width:100%" alt="Story Maker">
+      <h3>Story Maker</h3>
+      <p>Unleash your creativity with the AI Story Maker. It helps craft personalized stories by expanding on prompts and generating coherent narratives for you.</p>
+    </div>
+  </div>
+
+  <div class="w3-row-padding" id="quiz">
+    <div class="w3-half">
+      <img src="https://9434986.fs1.hubspotusercontent-na1.net/hubfs/9434986/33.%20Top%20X%20AI%20Quiz%20Generator%20Tools%20and%20Apps%20to%20Try%20in%202024%20-%20cover.jpg" style="width:100%" alt="Quiz">
+      <h3>Interactive Quiz</h3>
+      <p>Test your knowledge on various topics with our AI-powered quiz feature. Get personalized feedback and recommendations based on your performance.</p>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="w3-container" style="margin-top:80px" id="about">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>About</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
+    <p>Productive.ai is a revolutionary platform designed by the students of Lovely Public Sr. Sec. School, <strong>Sparsh Jain</strong>, <strong>Tanuj Sharma</strong>, and <strong>Harsh Melkani</strong>. This project is aimed at enhancing productivity by leveraging artificial intelligence to automate and simplify common tasks such as note-taking, stock recommendations, news summarization, and interactive quizzes.</p>
+    <p>The team of Lovely Public Sr. Sec. School envisioned an AI-driven platform that would make daily tasks more efficient and help users stay ahead in a fast-paced world. Their vision was to create a user-friendly application that would assist people from various industries in managing their workload more effectively.</p>
+  </div>
+
+  <!-- Uses Section -->
+  <div class="w3-container" style="margin-top:80px" id="uses">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Uses</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
+    <ul>
+      <li><strong>Smart Note Maker:</strong> This tool automates the process of note-taking, turning unstructured text into coherent and organized notes. It demonstrates innovation in how AI structures thoughts, improving clarity and accessibility. By integrating advanced natural language processing (NLP) techniques, it saves users time and enhances productivity. The Smart Note Maker is a prime example of how AI can streamline the way we manage and recall information, closely aligning with the theme of "enhancing human efficiency" through automation.</li>
+      
+      <li><strong>Stock Recommender:</strong> The Stock Recommender leverages AI algorithms to analyze historical data, market trends, and financial news to provide tailored stock suggestions. Its AI-driven insights empower users to make informed investment decisions. The innovation lies in its ability to process vast amounts of data in real time, offering recommendations that are both precise and adaptive. This tool integrates cutting-edge AI techniques, showcasing how AI can simplify complex financial analysis and enhance decision-making efficiency.</li>
+      
+      <li><strong>News Summarizer:</strong> By condensing lengthy articles into concise summaries, the News Summarizer optimizes how users stay informed. It utilizes AI to extract key points from large volumes of text, allowing users to consume more information in less time. The innovation here is the use of AI summarization models that accurately retain essential information. This tool aligns with the criteria of clarity, implementation, and focus on enhancing daily productivity by delivering timely and relevant news updates in an efficient manner.</li>
+      
+      <li><strong>Interactive Quiz:</strong> The AI-powered quiz adjusts the difficulty level based on user responses, providing a personalized learning experience. This innovative approach to education not only tests knowledge but also enhances it by offering targeted feedback and personalized study recommendations. The Interactive Quiz showcases creativity in its AI-driven adaptability, aligning perfectly with the theme of using AI to improve learning efficiency and engagement.</li>
+    </ul>
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>

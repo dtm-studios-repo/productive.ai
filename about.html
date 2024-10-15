@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Productive.ai - About Us</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body, h1, h2, h3, h4, h5 {
+      font-family: "Poppins", sans-serif;
+      color: white;
+    }
+    body {
+      font-size: 16px;
+      background-color: #121212;
+    }
+    .w3-sidebar {
+      background-color: #1e1e1e;
+    }
+    .w3-container img {
+      margin-bottom: 16px;
+      margin-top: 16px;
+      opacity: 0.9;
+      cursor: pointer;
+    }
+    .w3-container img:hover {
+      opacity: 1;
+    }
+    .header-logo {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto;
+    }
+    .footer {
+      background-color: #1e1e1e;
+      color: white;
+      padding: 32px;
+    }
+  </style>
+</head>
+<body>
+
+
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a> 
+    <a href="stocks.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommender</a> 
+    <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a> 
+    <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a> 
+    <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+  </div>
+</nav>
+
+
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+  <span style="color:white;">Productive.ai</span>
+</header>
+
+
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  
+  <div class="w3-container" style="margin-top:80px" id="about">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>About Productive.ai</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
+    <p><strong>Productive.ai</strong> is a revolutionary platform designed by the students of Lovely Public Sr. Sec. School: <strong>Sparsh Jain</strong>, <strong>Tanuj Sharma</strong>, and <strong>Harsh Melkani</strong>. This project is aimed at enhancing productivity by leveraging artificial intelligence to automate and simplify common tasks such as note-taking, stock recommendations, news summarization, and interactive quizzes.</p>
+
+    <p>The team of Lovely Public Sr. Sec. School envisioned an AI-driven platform that would make daily tasks more efficient and help users stay ahead in a fast-paced world. Their vision was to create a user-friendly application that would assist people from various industries in managing their workload more effectively.</p>
+  </div>
+
+</div>
+
+
+<div class="footer">
+  <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
+</div>
+
+<script>
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>

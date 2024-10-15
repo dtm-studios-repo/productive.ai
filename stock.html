@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Productive.ai - Stock Recommender</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body, h1, h2, h3, h4, h5 {
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+body {
+  font-size: 16px;
+  background-color: #121212;
+}
+.w3-sidebar {
+  background-color: #1e1e1e;
+}
+.w3-half img {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  opacity: 0.9;
+  cursor: pointer;
+}
+.w3-half img:hover {
+  opacity: 1;
+}
+.header-logo {
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  margin: 0 auto;
+}
+.footer {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 32px;
+}
+.button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a> 
+    <a href="#stock" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommender</a> 
+    <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a> 
+    <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a> 
+    <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
+  </div>
+</nav>
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+  <span style="color:white;">Productive.ai</span>
+</header>
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" style="margin-top:80px" id="stock">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Stock Recommender</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
+    <p>Receive AI-driven stock recommendations based on basic criteria.</p>
+    <div class="w3-container">
+      <h3>Get a Stock Recommendation:</h3>
+      <form id="stockForm">
+        <label for="risk">Risk Level (1-5):</label><br>
+        <input type="number" id="risk" name="risk" min="1" max="5" style="width: 50%;"><br><br>
+        <label for="sector">Preferred Sector:</label><br>
+        <select id="sector" name="sector" style="width: 50%;">
+          <option value="technology">Technology</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="finance">Finance</option>
+          <option value="energy">Energy</option>
+          <option value="consumer_goods">Consumer Goods</option>
+        </select><br><br>
+        <button class="button" type="button" onclick="recommendStock()">Get Recommendation</button>
+      </form>
+    </div>
+    <div class="w3-container" id="recommendation" style="margin-top:20px;"></div>
+
+  </div>
+
+
+</div>
+
+
+<div class="footer">
+  <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
+</div>
+
+<script>
+
+const stockData = {
+  technology: [
+    { name: 'TechCorp', risk: 2, return: '8% annual' },
+    { name: 'InnovateTech', risk: 4, return: '15% annual' }
+  ],
+  healthcare: [
+    { name: 'MediLife', risk: 3, return: '6% annual' },
+    { name: 'HealthWave', risk: 5, return: '18% annual' }
+  ],
+  finance: [
+    { name: 'SafeInvest', risk: 1, return: '4% annual' },
+    { name: 'FutureBank', risk: 4, return: '12% annual' }
+  ],
+  energy: [
+    { name: 'GreenPower', risk: 3, return: '7% annual' },
+    { name: 'OilWorks', risk: 5, return: '20% annual' }
+  ],
+  consumer_goods: [
+    { name: 'ShopMore', risk: 2, return: '5% annual' },
+    { name: 'HomeEssentials', risk: 3, return: '7% annual' }
+  ]
+};
+
+
+function recommendStock() {
+  const risk = document.getElementById('risk').value;
+  const sector = document.getElementById('sector').value;
+
+
+  const recommendations = stockData[sector].filter(stock => stock.risk <= risk);
+
+ 
+  const recommendationDiv = document.getElementById('recommendation');
+  if (recommendations.length > 0) {
+    const stock = recommendations[Math.floor(Math.random() * recommendations.length)];
+    recommendationDiv.innerHTML = `<h3>Recommended Stock: ${stock.name}</h3>
+                                   <p>Risk Level: ${stock.risk}</p>
+                                   <p>Expected Return: ${stock.return}</p>`;
+  } else {
+    recommendationDiv.innerHTML = `<p>No stocks match your risk criteria.</p>`;
+  }
+}
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
