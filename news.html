@@ -1,134 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Productive.ai - News Summarizer</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Summarizer</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <style>
-        body, h1, h2, h3, h4, h5 {
+        body, h1, h2, p {
             font-family: "Poppins", sans-serif;
             color: white;
         }
         body {
-            font-size: 16px;
             background-color: #121212;
+            padding: 20px;
         }
-        .w3-sidebar {
-            background-color: #1e1e1e;
+        .container {
+            margin: auto;
+            max-width: 600px;
+            text-align: center;
         }
-        .w3-container img {
-            margin-bottom: 16px;
-            margin-top: 16px;
-            opacity: 0.9;
-            cursor: pointer;
-        }
-        .w3-container img:hover {
-            opacity: 1;
-        }
-        .header-logo {
-            width: 100%;
-            max-width: 300px;
-            display: block;
-            margin: 0 auto;
+        .button {
+            margin: 10px;
         }
         .footer {
-            background-color: #1e1e1e;
-            color: white;
-            padding: 32px;
-        }
-        button {
-            padding: 10px;
-            margin: 10px 5px;
-            background-color: #ff9800;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #e68a00;
-        }
-        #summary {
             margin-top: 20px;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
-    <div class="w3-container">
-        <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+<div class="container">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>News Summarizer</b></h1>
+    <p>Select a subtopic to summarize the latest news:</p>
+    
+    <button class="button w3-button w3-blue" onclick="getNewsSummary('technology')">Technology</button>
+    <button class="button w3-button w3-blue" onclick="getNewsSummary('health')">Health</button>
+    <button class="button w3-button w3-blue" onclick="getNewsSummary('business')">Business</button>
+
+    <div id="newsContent" class="w3-container" style="margin-top:20px;"></div>
+
+    <div class="footer">
+        <p>Powered by <a href="front.html" style="color:white;">Productive.ai</a></p>
     </div>
-    <div class="w3-bar-block">
-        <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
-        <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a>
-        <a href="stocks.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommender</a>
-        <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a>
-        <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a>
-        <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
-        <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
-    </div>
-</nav>
-
-<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
-    <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
-    <span style="color:white;">Productive.ai</span>
-</header>
-
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
-    <div class="w3-container" style="margin-top:80px" id="newsSummarizer">
-        <h1 class="w3-xxxlarge w3-text-blue"><b>News Summarizer</b></h1>
-        <hr style="width:50px;border:5px solid blue" class="w3-round">
-        <p>Select a subtopic to get summarized news from all sources:</p>
-
-        <div id="subtopics">
-            <button onclick="getNewsSummary('Technology')">Technology</button>
-            <button onclick="getNewsSummary('Finance')">Finance</button>
-            <button onclick="getNewsSummary('Health')">Health</button>
-            <button onclick="getNewsSummary('Sports')">Sports</button>
-            <button onclick="getNewsSummary('Politics')">Politics</button>
-        </div>
-
-        <div id="summary">
-            <h3>News Summary:</h3>
-            <div id="newsContent"></div>
-        </div>
-    </div>
-</div>
-
-<div class="footer">
-    <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
 </div>
 
 <script>
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
-
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-}
-
-async function getNewsSummary(subtopic) {
-    const response = await fetch('/summarize-news', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ subtopic: subtopic }),
-    });
-
-    const data = await response.json();
-    const newsContent = document.getElementById('newsContent');
-    newsContent.innerHTML = data.summary || 'No summary available.';
-}
+    async function getNewsSummary(subtopic) {
+        const apiKey = 'YOUR_NEWS_API_KEY'; // Replace with your News API key
+        const url = `https://newsapi.org/v2/everything?q=${subtopic}&apiKey=${apiKey}`;
+        
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.articles.length > 0) {
+            const summary = data.articles.map(article => 
+                `<h3>${article.title}</h3><p>${article.description}</p>`
+            ).join('');
+            document.getElementById('newsContent').innerHTML = summary;
+        } else {
+            document.getElementById('newsContent').innerHTML = 'No news articles available.';
+        }
+    }
 </script>
 
 </body>
