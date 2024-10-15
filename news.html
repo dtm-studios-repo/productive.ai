@@ -15,8 +15,11 @@
             background-color: #121212;
             padding: 20px;
         }
+        .w3-sidebar {
+            background-color: #1e1e1e;
+        }
         .container {
-            margin: auto;
+            margin-left: 300px; /* Sidebar width */
             max-width: 600px;
             text-align: center;
         }
@@ -30,6 +33,29 @@
     </style>
 </head>
 <body>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <div class="w3-container">
+        <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+    </div>
+    <div class="w3-bar-block">
+        <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+        <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a> 
+        <a href="stocks.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommender</a> 
+        <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a> 
+        <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a> 
+        <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
+        <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+    </div>
+</nav>
+
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+    <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+    <span style="color:white;">Productive.ai</span>
+</header>
+
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <div class="container">
     <h1 class="w3-xxxlarge w3-text-blue"><b>News Summarizer</b></h1>
@@ -62,6 +88,16 @@
         } else {
             document.getElementById('newsContent').innerHTML = 'No news articles available.';
         }
+    }
+
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
     }
 </script>
 
