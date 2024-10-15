@@ -1,128 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Productive.ai - Stock Recommender</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-<style>
-body, h1, h2, h3, h4, h5 {
-  font-family: "Poppins", sans-serif;
-  color: white;
-}
-body {
-  font-size: 16px;
-  background-color: #121212;
-}
-.w3-sidebar {
-  background-color: #1e1e1e;
-}
-.header-logo {
-  width: 100%;
-  max-width: 300px;
-  display: block;
-  margin: 0 auto;
-}
-.footer {
-  background-color: #1e1e1e;
-  color: white;
-  padding: 32px;
-}
-.button {
-  background-color: blue;
-  color: white;
-  border: none;
-  padding: 15px 32px;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-</style>
+  <title>Productive.ai - Stock Recommender</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body, h1, h2, h3, h4, h5 {
+      font-family: "Poppins", sans-serif;
+      color: white;
+    }
+    body {
+      font-size: 16px;
+      background-color: #121212;
+    }
+    .w3-sidebar {
+      background-color: #1e1e1e;
+    }
+    .button {
+      background-color: blue;
+      color: white;
+      border: none;
+      padding: 15px 32px;
+      text-align: center;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-  <div class="w3-container">
-    <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
-  </div>
-  <div class="w3-bar-block">
-    <a href="front.html" class="w3-bar-item w3-button w3-hover-white">Home</a>
-    <a href="summarize.html" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a>
-    <a href="news.html" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a>
-    <a href="quiz.html" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a>
-    <a href="about.html" class="w3-bar-item w3-button w3-hover-white">About</a> 
-  </div>
-</nav>
-
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
-  <div class="w3-container" style="margin-top:80px" id="stock">
-    <h1 class="w3-xxxlarge w3-text-blue"><b>Stock Recommender</b></h1>
-    <hr style="width:50px;border:5px solid blue" class="w3-round">
-    <p>Receive AI-driven stock recommendations based on basic criteria.</p>
+  <nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" id="mySidebar">
     <div class="w3-container">
-      <h3>Get a Stock Recommendation:</h3>
-      <form id="stockForm">
-        <label for="risk">Risk Level (1-5):</label><br>
-        <input type="number" id="risk" name="risk" min="1" max="5" style="width: 50%;"><br><br>
-        <label for="sector">Preferred Sector:</label><br>
-        <select id="sector" name="sector" style="width: 50%;">
-          <option value="technology">Technology</option>
-          <option value="healthcare">Healthcare</option>
-          <option value="finance">Finance</option>
-          <option value="energy">Energy</option>
-          <option value="consumer_goods">Consumer Goods</option>
-        </select><br><br>
-        <button class="button" type="button" onclick="recommendStock()">Get Recommendation</button>
-      </form>
+      <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
     </div>
-    <div class="w3-container" id="recommendation" style="margin-top:20px;"></div>
+    <div class="w3-bar-block">
+      <a href="front.html" class="w3-bar-item w3-button w3-hover-white">Home</a>
+      <a href="about.html" class="w3-bar-item w3-button w3-hover-white">About</a>
+    </div>
+  </nav>
+
+  <div class="w3-main" style="margin-left:340px;margin-right:40px">
+    <div class="w3-container" style="margin-top:80px" id="stock">
+      <h1 class="w3-xxxlarge w3-text-blue"><b>Stock Recommender</b></h1>
+      <hr style="width:50px;border:5px solid blue" class="w3-round">
+      <p>Receive AI-driven stock recommendations based on basic criteria.</p>
+      <div class="w3-container">
+        <h3>Get a Stock Recommendation:</h3>
+        <form id="stockForm">
+          <label for="risk">Risk Level (1-5):</label><br>
+          <input type="number" id="risk" name="risk" min="1" max="5" style="width: 50%;"><br><br>
+          <label for="sector">Preferred Sector:</label><br>
+          <select id="sector" name="sector" style="width: 50%;">
+            <option value="Technology">Technology</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Finance">Finance</option>
+            <option value="Energy">Energy</option>
+            <option value="Consumer Goods">Consumer Goods</option>
+          </select><br><br>
+          <button class="button" type="button" onclick="recommendStock()">Get Recommendation</button>
+        </form>
+      </div>
+      <div class="w3-container" id="recommendation" style="margin-top:20px;"></div>
+    </div>
   </div>
-</div>
 
-<div class="footer">
-  <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
-</div>
+  <div class="footer">
+    <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
+  </div>
 
-<script>
-async function recommendStock() {
-  const risk = document.getElementById('risk').value;
-  const sector = document.getElementById('sector').value;
-  
-  const apiKey = 'LFaYlEfunVcfo5EeBSOzxqNhTRkVwgDe'; 
+  <script>
+    async function recommendStock() {
+      const risk = document.getElementById('risk').value;
+      const sector = document.getElementById('sector').value;
 
-  const sectorMap = {
-    technology: 'tech',
-    healthcare: 'health',
-    finance: 'finance',
-    energy: 'energy',
-    consumer_goods: 'consumer'
-  };
+      const apiKey = 'YOUR_API_KEY'; // Replace with your Polygon API key
+      const url = `https://api.polygon.io/v3/reference/tickers?market=stocks&active=true&sector=${sector}&apiKey=${apiKey}`;
 
-  const url = `https://api.polygon.io/v2/reference/stocks?sector=${sectorMap[sector]}&apiKey=${apiKey}`;
-  
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    const recommendations = data.results.filter(stock => stock.risk_level <= risk);
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
 
-    const recommendationDiv = document.getElementById('recommendation');
-    if (recommendations.length > 0) {
-      const stock = recommendations[Math.floor(Math.random() * recommendations.length)];
-      recommendationDiv.innerHTML = `<h3>Recommended Stock: ${stock.name}</h3>
-                                     <p>Risk Level: ${stock.risk_level}</p>
-                                     <p>Symbol: ${stock.ticker}</p>`;
-    } else {
-      recommendationDiv.innerHTML = `<p>No stocks match your risk criteria.</p>`;
+        const recommendationDiv = document.getElementById('recommendation');
+
+        if (data.results && data.results.length > 0) {
+          const randomStock = data.results[Math.floor(Math.random() * data.results.length)];
+          recommendationDiv.innerHTML = `<h3>Recommended Stock: ${randomStock.name} (${randomStock.ticker})</h3>
+                                         <p>Industry: ${randomStock.industry}</p>`;
+        } else {
+          recommendationDiv.innerHTML = `<p>No stocks match your criteria.</p>`;
+        }
+      } catch (error) {
+        console.error('Error fetching stock data:', error);
+        document.getElementById('recommendation').innerHTML = '<p>Error fetching stock data.</p>';
+      }
     }
-  } catch (error) {
-    console.error('Error fetching stock data:', error);
-    document.getElementById('recommendation').innerHTML = '<p>Error fetching stock data.</p>';
-  }
-}
-</script>
+  </script>
 
 </body>
 </html>
