@@ -1,153 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Productive.ai - Stock Recommender</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Recommender</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <style>
-        body, h1, h2, h3, h4, h5 {
+        body, h1, h2, h3 {
             font-family: "Poppins", sans-serif;
             color: white;
         }
         body {
-            font-size: 16px;
             background-color: #121212;
         }
         .w3-sidebar {
             background-color: #1e1e1e;
         }
-        .w3-container img {
-            margin-bottom: 16px;
-            margin-top: 16px;
-            opacity: 0.9;
-            cursor: pointer;
-        }
-        .w3-container img:hover {
-            opacity: 1;
-        }
-        .header-logo {
-            width: 100%;
-            max-width: 300px;
-            display: block;
-            margin: 0 auto;
-        }
-        .footer {
+        .container {
+            margin-left: 340px;
+            margin-right: 40px;
+            padding: 20px;
             background-color: #1e1e1e;
+            border-radius: 8px;
             color: white;
-            padding: 32px;
         }
-        input, button {
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
+        h1 {
+            color: #3498db;
+        }
+        .recommendation-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #2b2b2b;
             border-radius: 5px;
-            width: 100%;
-        }
-        input {
-            background-color: #333;
-            color: #fff;
-        }
-        button {
-            background-color: #ff9800;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #e68a00;
         }
     </style>
 </head>
 <body>
 
+<!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
-    <div class="w3-container">
-        <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
-    </div>
-    <div class="w3-bar-block">
-        <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
-        <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a>
-        <a href="stocks.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommender</a>
-        <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a>
-        <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a>
-        <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
-        <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
-    </div>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a> 
+    <a href="stock.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommender</a> 
+    <a href="story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
+    <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a> 
+    <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz</a> 
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
+    <a href="uses.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Uses</a>   </div>
 </nav>
 
-<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
-    <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
-    <span style="color:white;">Productive.ai</span>
-</header>
-
+<!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
-    <div class="w3-container" style="margin-top:80px" id="stockRecommender">
-        <h1 class="w3-xxxlarge w3-text-blue"><b>Stock Recommender</b></h1>
-        <hr style="width:50px;border:5px solid blue" class="w3-round">
-        <p>Use AI to recommend the best stocks based on your desired returns and number of days.</p>
+<!-- Main Content -->
+<div class="container">
+    <h1>Stock Recommender</h1>
+    <p>Welcome! Enter your preferences to receive tailored stock recommendations.</p>
 
-        <form id="stockForm">
-            <label for="days">Number of Days:</label>
-            <input type="number" id="days" name="days" placeholder="Enter number of days" required>
-
-            <label for="returns">Desired Returns (%) :</label>
-            <input type="number" id="returns" name="returns" placeholder="Enter returns percentage" required>
-
-            <button type="submit">Get Recommended Stocks</button>
+    <!-- Recommendation Form -->
+    <div class="recommendation-container">
+        <h2>Get Your Recommendations</h2>
+        <form id="recommendation-form">
+            <label for="min-return">Minimum Return (%):</label><br>
+            <input type="number" id="min-return" name="min-return" required><br><br>
+            <label for="investment-days">Investment Time Period (days, min 100):</label><br>
+            <input type="number" id="investment-days" name="investment-days" min="100" required><br><br>
+            <button type="submit">Get Recommendations</button>
         </form>
-
-        <div id="recommendations"></div>
+        <div id="results" style="margin-top: 20px;"></div>
     </div>
 </div>
 
-<div class="footer">
-    <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
+<!-- Footer -->
+<div class="w3-container w3-padding-32 w3-center" style="background-color: #1e1e1e; color: white;">
+  <p>Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
 </div>
 
 <script>
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
-
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-}
-
-document.getElementById('stockForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-
-    const days = document.getElementById('days').value;
-    const returns = document.getElementById('returns').value;
-
-    // Call your backend API to get stock recommendations
-    try {
-        const response = await fetch('http://localhost:5000/recommend-stocks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ days: days, returns: returns }),
-        });
-
-        const data = await response.json();
-        const recommendationsDiv = document.getElementById('recommendations');
-
-        if (data.stocks && data.stocks.length > 0) {
-            recommendationsDiv.innerHTML = `<h3>Recommended Stocks:</h3><ul>${data.stocks.map(stock => `<li>${stock}</li>`).join('')}</ul>`;
-        } else {
-            recommendationsDiv.innerHTML = `<p>No stocks match your criteria.</p>`;
-        }
-    } catch (error) {
-        console.error('Error fetching recommendations:', error);
-        document.getElementById('recommendations').innerHTML = `<p>Failed to get stock recommendations. Try again later.</p>`;
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
     }
-});
+    
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Mock function to simulate stock recommendations
+    function getStockRecommendations(minReturn) {
+        const stocks = [
+            { name: 'RELIANCE.NS', returns: 10.5 },
+            { name: 'TCS.NS', returns: 8.7 },
+            { name: 'INFY.NS', returns: 12.3 },
+            { name: 'HDFCBANK.NS', returns: 9.4 },
+            { name: 'HINDUNILVR.NS', returns: 7.1 },
+            { name: 'ICICIBANK.NS', returns: 11.2 },
+            { name: 'KOTAKBANK.NS', returns: 13.5 },
+            { name: 'SBIN.NS', returns: 6.8 },
+            { name: 'BHARTIARTL.NS', returns: 9.0 },
+            { name: 'HDFC.NS', returns: 10.0 },
+            { name: 'ITC.NS', returns: 5.5 },
+            { name: 'ASIANPAINT.NS', returns: 14.0 },
+            { name: 'MARUTI.NS', returns: 11.5 },
+            { name: 'AXISBANK.NS', returns: 8.9 },
+            { name: 'LT.NS', returns: 10.8 },
+        ];
+
+        return stocks.filter(stock => stock.returns >= minReturn);
+    }
+
+    // Handle form submission
+    document.getElementById('recommendation-form').onsubmit = function(event) {
+        event.preventDefault();
+
+        const minReturn = parseFloat(document.getElementById('min-return').value);
+        const investmentDays = parseInt(document.getElementById('investment-days').value);
+
+        // Get stock recommendations
+        const recommendations = getStockRecommendations(minReturn);
+
+        // Display results
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+
+        if (recommendations.length > 0) {
+            resultsDiv.innerHTML = '<h3>Your Recommendations:</h3>';
+            recommendations.forEach(stock => {
+                resultsDiv.innerHTML += `<p>${stock.name}: Estimated returns ${stock.returns}%</p>`;
+            });
+        } else {
+            resultsDiv.innerHTML = '<p>No stocks found matching your criteria.</p>';
+        }
+    };
 </script>
 
 </body>
