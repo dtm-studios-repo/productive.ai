@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Productive.ai - Marks Percentage Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body, h1, h2, h3, h4, h5 {
+      font-family: "Poppins", sans-serif;
+      color: white;
+    }
+    body {
+      font-size: 16px;
+      background-color: #121212;
+    }
+    .w3-sidebar {
+      background-color: #1e1e1e;
+    }
+    .footer {
+      background-color: #1e1e1e;
+      color: white;
+      padding: 32px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px;color:white;">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Productive.ai</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="front.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="summarize.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Smart Note Maker</a> 
+    <a href="stocks.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Stock Recommender</a> 
+    <a href="news.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News Summarizer</a> 
+    <a href="quiz.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quiz Maker</a> 
+    <a href="Story.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Story Maker</a>
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+  </div>
+</nav>
+
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+  <span style="color:white;">Productive.ai</span>
+</header>
+
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <div class="w3-container" style="margin-top:80px" id="calculator">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Marks Percentage Calculator</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
+    
+    <p>Enter your marks obtained and maximum marks for 6 subjects:</p>
+    
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <input type="number" id="subject1Obtained" placeholder="Subject 1 - Marks Obtained" class="w3-input w3-border" required>
+        <input type="number" id="subject1Max" placeholder="Subject 1 - Max Marks" class="w3-input w3-border" required>
+      </div>
+      <div class="w3-half">
+        <input type="number" id="subject2Obtained" placeholder="Subject 2 - Marks Obtained" class="w3-input w3-border" required>
+        <input type="number" id="subject2Max" placeholder="Subject 2 - Max Marks" class="w3-input w3-border" required>
+      </div>
+      <div class="w3-half">
+        <input type="number" id="subject3Obtained" placeholder="Subject 3 - Marks Obtained" class="w3-input w3-border" required>
+        <input type="number" id="subject3Max" placeholder="Subject 3 - Max Marks" class="w3-input w3-border" required>
+      </div>
+      <div class="w3-half">
+        <input type="number" id="subject4Obtained" placeholder="Subject 4 - Marks Obtained" class="w3-input w3-border" required>
+        <input type="number" id="subject4Max" placeholder="Subject 4 - Max Marks" class="w3-input w3-border" required>
+      </div>
+      <div class="w3-half">
+        <input type="number" id="subject5Obtained" placeholder="Subject 5 - Marks Obtained" class="w3-input w3-border" required>
+        <input type="number" id="subject5Max" placeholder="Subject 5 - Max Marks" class="w3-input w3-border" required>
+      </div>
+      <div class="w3-half">
+        <input type="number" id="subject6Obtained" placeholder="Subject 6 - Marks Obtained" class="w3-input w3-border" required>
+        <input type="number" id="subject6Max" placeholder="Subject 6 - Max Marks" class="w3-input w3-border" required>
+      </div>
+    </div>
+    
+    <button onclick="calculatePercentage()" class="w3-button w3-blue w3-margin-top">Calculate Percentage</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p class="w3-right">Powered by <a href="front.html" title="Productive.ai" target="_blank" class="w3-hover-opacity" style="color:white;">Productive.ai</a></p>
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+function calculatePercentage() {
+  let totalObtained = 0;
+  let totalMax = 0;
+
+  for (let i = 1; i <= 6; i++) {
+    let obtained = parseFloat(document.getElementById(`subject${i}Obtained`).value) || 0;
+    let max = parseFloat(document.getElementById(`subject${i}Max`).value) || 0;
+
+    totalObtained += obtained;
+    totalMax += max;
+  }
+
+  let percentage = (totalObtained / totalMax) * 100;
+
+  document.getElementById("result").innerHTML = "Your percentage is: " + percentage.toFixed(2) + "%";
+}
+</script>
+
+</body>
+</html>
